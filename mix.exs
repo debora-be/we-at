@@ -7,7 +7,8 @@ defmodule WeAt.MixProject do
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      escript: [main_module: WeAt.Weather.IO]
     ]
   end
 
@@ -22,7 +23,8 @@ defmodule WeAt.MixProject do
   defp deps do
     [
       {:httpoison, "~> 2.0"},
-      {:jason, "~> 1.2"}
+      {:jason, "~> 1.2"},
+      {:mock, "~> 0.3.0", only: :test}
     ]
   end
 end

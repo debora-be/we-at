@@ -1,0 +1,15 @@
+version: "3"
+services:
+  we_at:
+    container_name: we_at
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      - we_at_network
+
+networks:
+  we_at_network:
+    name: we_at_network

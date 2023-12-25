@@ -25,7 +25,7 @@ defmodule WeAt.Weather.Cache do
         {:reply, weather, state}
 
       [] ->
-        case WeAt.Weather.Fetcher.fetch_weather(city) do
+        case WeAt.Weather.Fetcher.run(city) do
           {:ok, weather} ->
             :ets.insert(@ets_table, {city, weather})
             {:reply, weather, state}
