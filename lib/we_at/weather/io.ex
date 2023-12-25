@@ -21,15 +21,23 @@ defmodule WeAt.Weather.IO do
         :ok
 
       "exit\n" ->
-        :io.format("Exiting WeAt.~n")
+        :io.format("Exiting WeatherApp.~n")
         :ok
 
-      city ->
-        city
-        |> String.trim()
-        |> fetch_and_display_weather()
-
+      input ->
+        city = String.trim(input) |> parse_city()
+        fetch_and_display_weather(city)
         start_weather_fetching()
+    end
+  end
+
+  defp parse_city(input) do
+    case String.split(input, " ") do
+      [city] ->
+        city
+
+      [first_word | rest] ->
+        [first_word | rest] |> Enum.join(" ")
     end
   end
 
